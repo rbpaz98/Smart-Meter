@@ -1,0 +1,22 @@
+#include <SoftwareSerial.h>
+
+int userchoice;
+int bluetoothTx = 2; //enab.les the bluetooth 
+int bluetoothRx = 3; //enables the bluetooth
+int led = 13;
+
+SoftwareSerial bluetooth(bluetoothTx, bluetoothRx);
+void setup()
+{
+  pinMode(13,OUTPUT);
+  bluetooth.begin(9600);
+}
+
+void loop() {
+  if (bluetooth.available()){
+    userchoice = (int)bluetooth.read();
+    }
+   if (userchoice == '1'){digitalWrite(led,HIGH);}
+   if (userchoice == '2'){digitalWrite(led,LOW);}
+
+}
